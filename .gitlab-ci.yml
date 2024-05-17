@@ -16,7 +16,9 @@ pages:
 
   # 安装 pnpm
   before_script:
-    - curl -fsSL https://get.pnpm.io/install.sh | sh -
+    - npm install pnpm -g
+    - pnpm config get registry 
+    - pnpm config set registry https://registry.npmmirror.com/
     - pnpm config set store-dir .pnpm-store
 
   # 安装依赖并运行构建脚本
