@@ -2,7 +2,7 @@ import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 
 export default defineUserConfig({
-  base: "/",
+  base: "/study-note-doc/",
 
   lang: "zh-CN",
   title: "Glory学习笔记",
