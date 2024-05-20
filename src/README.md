@@ -14,6 +14,5 @@ icon: home
 
 ## 本站内容
 
-- [Spring相关内容](/spring/spring-framework/)
-- [SpringBoot相关内容](/spring/springboot/)
-
+- [Spring相关内容](./spring/spring-framework/)
+- [SpringBoot相关内容](./spring/springboot/)
