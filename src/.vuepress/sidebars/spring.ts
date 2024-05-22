@@ -1,7 +1,7 @@
 export default [
     {
         text: "Spring",
-        collapsible: true,
+        collapsible: true,//设置分组是否可以折叠，默认值是 false,
         link: "spring-framework/",
         prefix: "spring-framework/",
         children: [
@@ -15,6 +15,15 @@ export default [
         link: "springboot/",
         prefix: "springboot/",
         children: [],
+    },
+    {
+        text: "SpringCloud",
+        collapsible: true,
+        link: "springcloud/",
+        prefix: "springcloud/",
+        children: [
+            "springcloudgateway"
+        ],
     },
   ];
   
