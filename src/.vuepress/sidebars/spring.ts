@@ -5,7 +5,7 @@ export default [
         link: "spring-framework/",
         prefix: "spring-framework/",
         children: [
-        // "循环依赖",
+        "循环依赖",
         "spring声明式事务",
         ],
     },

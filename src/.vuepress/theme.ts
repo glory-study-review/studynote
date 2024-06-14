@@ -30,14 +30,13 @@ export default hopeTheme({
 
   // 页脚
   footer: "Theme by <a style:'' href='https://github.com/vuepress-theme-hope/vuepress-theme-hope' target='_blank' title='本站主题'>Hope</a>",
-  // copyrightText: "Glory",
 
   displayFooter: true,
 
   // 加密配置
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"],
+      "/demo/encrypt.html": ["1357924680"],
     },
   },
 
@@ -51,6 +50,7 @@ export default hopeTheme({
 
   // 在这里配置主题提供的插件
   plugins: {
+    copyright: true ,
     // 注意: 仅用于测试! 你必须自行生成并在生产环境中使用自己的评论服务
     // comment: {
     //   provider: "Giscus",
@@ -72,7 +72,7 @@ export default hopeTheme({
       codetabs: true,
       component: true,
       demo: true,
-      figure: true,
+      figure: false,
       imgLazyload: true,
       imgSize: true,
       include: true,
