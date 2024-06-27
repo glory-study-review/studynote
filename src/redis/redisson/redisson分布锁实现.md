@@ -6,7 +6,7 @@
 
 ![image-20240626144916385](./../../.vuepress/public/img/image-20240626144916385.png)
 
-调用了**private void lock(long leaseTime, TimeUnit unit, boolean interruptibly)**重载方法
+调用了**private void lock(long leaseTime, TimeUnit unit, boolean interruptibly)** 重载方法
 
 ```java
 private void lock(long leaseTime, TimeUnit unit, boolean interruptibly) throws InterruptedException {
