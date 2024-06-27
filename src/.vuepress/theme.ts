@@ -50,7 +50,10 @@ export default hopeTheme({
 
   // 在这里配置主题提供的插件
   plugins: {
-    copyright: true ,
+    copyright: {
+      disableCopy:true,
+      global:true,
+    } ,
     // 注意: 仅用于测试! 你必须自行生成并在生产环境中使用自己的评论服务
     // comment: {
     //   provider: "Giscus",
