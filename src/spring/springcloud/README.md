@@ -1,7 +1,7 @@
 ---
 title: SpringCloud
 index: false
-icon: laptop-code
+# icon: laptop-code
 ---
 
 <Catalog />

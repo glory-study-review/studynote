@@ -7,4 +7,5 @@ export default navbar([
     icon: "home",
   },
   "/spring/",
+  "/redis/",
 ]);
