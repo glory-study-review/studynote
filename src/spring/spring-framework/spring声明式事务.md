@@ -17,7 +17,7 @@
 
 5. MySQL存储引警不支持事务
 
-https://blog.csdn.net/qq_52423918/article/details/130806813
+参考：[https://blog.csdn.net/qq_52423918/article/details/130806813](https://blog.csdn.net/qq_52423918/article/details/130806813)
 
 ## 传播行为
 
@@ -35,10 +35,14 @@ https://blog.csdn.net/qq_52423918/article/details/130806813
 
 3.**`NESTED`**
 
-当外部方法存在事务时，内部方法事务成为外部事务的嵌套子事务，当内部事务回滚时只会回滚到内部事务执行前抓鬼套
+当外部方法存在事务时，内部方法事务成为外部事务的嵌套子事务，当内部事务回滚时只会回滚到内部事务执行前状态
 当外部方法不存在事务时，内部方法创建自己独立的事务执行
 
 4.**`MANDATORY`**
+
+当外部方法存在事务，内部方法事务加入
+
+当外部方法不存在事务时，抛出异常
 
 5.**`SUPPORTS`**
 
@@ -104,7 +108,7 @@ public class B {
 
 ![](./../../.vuepress/public/img/image-20240418141241175.png)
 
-开启事务的具体处理由事务管理器的抽象类定义，使用getTransaction模板方法，传入事务属性
+开启事务的具体处理由事务管理器的抽象类(AbstractPlatformTransactionManager)定义，使用getTransaction模板方法，传入事务属性
 
 ![](./../../.vuepress/public/img/image-20240418143924879.png)
 
@@ -116,7 +120,9 @@ doGetTransaction 返回一个事务对象 由具体的事务管理器实现类�
 
 创建一个事务对象存放当前事务的数据连接持有对象 和 是否为新持有对象的标识，后续通过该数据持有对象获取连接。
 
-继续执行，判断当前是否已存在事务，此处是对于子事务如何处理的入口
+回到`getTransaction`继续执行，`isExistingTransaction`判断当前是否已存在事务，分支内是对于子事务如何处理的入口
+
+DataSourceTransactionManager 的 isExistingTransaction
 
 ![](./../../.vuepress/public/img/image-20240418150902836.png)
 
@@ -134,7 +140,9 @@ doGetTransaction 返回一个事务对象 由具体的事务管理器实现类�
 
 该方法会创建一个事务状态对象，保存着当前事务的属性，事务对象，是否为新事物等等信息，用于后续事务处理的；
 
-继续执行到doBegin，由事务管理器实现类实现
+继续执行到 的 `doBegin`，由事务管理器实现类实现
+
+此处是DataSourceTransactionManager的实现
 
 ![](./../../.vuepress/public/img/image-20240418152341645.png)
 
@@ -142,17 +150,15 @@ doGetTransaction 返回一个事务对象 由具体的事务管理器实现类�
 
 会从数据池中获取连接，并将连接持有对象存入到事务对象中，设置新持有对象状态为true，然后将连接设为事务手动提交；连接持有对象活动事务标志设上，保证前面判断已存在事务的正确性；由于是新持有对象，可执行TransactionSynchronizationManager的绑定操作，这就保证了，子事务在开启的过程中doGetTransaction()方法中能够获取同一持有对象。
 
-继续执行的prepareSynchronization，将当前事务的状态(如：当前事务开启状态、激活状态、隔离级别)、初始化事务同步回调内容，存放的是当前需要操作的事务信息。
+回到startTransaction，继续执行prepareSynchronization方法，将当前事务的状态(如：当前事务开启状态、激活状态、隔离级别)、初始化事务同步回调内容，存放的是当前需要操作的事务信息。
 
 ![](./../../.vuepress/public/img/image-20240418161342349.png)
 
-至此开启事务结束，返回事务状态对象，执行原方法
+至此开启事务结束，返回事务状态对象，回到`invokeWithinTransaction`执行带代理的原方法
 
 ![](./../../.vuepress/public/img/image-20240418162107965.png)
 
 如果当前方法中没有调用其他存在事务的方法，那么原方法调用完成后，直接回滚或者提交
-
-
 
 先看看提交
 

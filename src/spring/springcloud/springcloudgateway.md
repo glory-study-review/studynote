@@ -101,6 +101,7 @@ save和delete方法来自`RouteDefinitionWriter`接口，由RouteDefinitionRepos
 至此，使用该事件发布订阅机制就可以实现动态的更新CachingRouteLocator中的Route信息
 
 Gateway中通过RoutePredicateHandlerMapping类，在其中由属性RouteLocator获取Route的断言遍历匹配exchange，将route存入exchange，然后交给后续的FilteringWebHandler，匹配相应的过滤器执行相应内容；
+
 ![](./../../.vuepress/public/img/image-20240522154342117.png)
 
 ![](./../../.vuepress/public/img/image-20240522154417538.png)
