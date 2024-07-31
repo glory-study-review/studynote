@@ -18,9 +18,13 @@ export default hopeTheme({
 
   logo: "/logo.png",
 
-  // repo: "vuepress-theme-hope/vuepress-theme-hope",
-
-  // docsDir: "src",
+  //仓库地址
+  repo: "glory-study-review/studynote",
+  repoLabel: "GitHub",
+  //是否导航栏显示图标
+  repoDisplay: true,
+  //文档在仓库中的目录，默认为根目录
+  docsDir: "src",
 
   // 导航栏
   navbar,
@@ -39,10 +43,11 @@ export default hopeTheme({
       "/demo/encrypt.html": ["1357924680"],
     },
   },
+  editLink:false,
 
   // 多语言配置
   metaLocales: {
-    editLink: "在 GitHub 上编辑此页",
+    // editLink: "在 GitHub 上编辑此页",
   },
 
   // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
@@ -51,7 +56,8 @@ export default hopeTheme({
   // 在这里配置主题提供的插件
   plugins: {
     copyright: {
-      disableCopy:true,
+      //禁止夫复制
+      disableCopy:false,
       global:true,
     } ,
     // 注意: 仅用于测试! 你必须自行生成并在生产环境中使用自己的评论服务
