@@ -7,6 +7,7 @@ export default [
         children: [
         "循环依赖",
         "spring声明式事务",
+        "aop"
         ],
     },
     {
@@ -14,7 +15,9 @@ export default [
         collapsible: true,
         // link: "springboot/",
         prefix: "springboot/",
-        children: [],
+        children: [
+            "springbootaop代理生成流程"
+        ],
     },
     {
         text: "SpringCloud",
