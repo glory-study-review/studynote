@@ -1,0 +1,5 @@
+
+User-agent:*
+Disallow:
+
+Sitemap: https://glory-study-review.github.io/studynote/studynote/sitemap.xml
